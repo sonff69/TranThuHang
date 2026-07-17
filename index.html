@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trần Thu Hằng - Digital Portfolio</title>
     
-    <!-- Google Fonts: Nghệ thuật & Công nghệ -->
+    <!-- Google Fonts: Sách vở cổ điển & Công nghệ tương lai -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- THIẾT LẬP BIẾN MÀU SẮC & PHONG CÁCH --- */
+        /* --- THIẾT LẬP BIẾN MÀU SẮC NGHỆ THUẬT --- */
         :root {
-            --bg-cream: #FAF7F2;
-            --primary-blue: #4E6B82;
-            --secondary-blue: #708A9E;
-            --deep-indigo: #203545;
-            --sage-green: #9EA89A;
-            --warm-beige: #E6DDD0;
-            --slate-gray: #5D6D7E;
-            --white-glass: rgba(255, 255, 255, 0.78);
+            --bg-silk: #FAF6F0;
+            --primary-blue: #3E5A73;
+            --secondary-blue: #637F94;
+            --deep-indigo: #172635;
+            --sage-green: #899985;
+            --gold-accent: #CFBA9D;
+            --glass-white: rgba(255, 255, 255, 0.72);
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-fast: all 0.25s ease;
+            --font-display: 'Cinzel', serif;
+            --transition-luxury: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         /* --- THIẾT LẬP CHUNG --- */
@@ -40,13 +40,13 @@
 
         body {
             font-family: var(--font-sans);
-            background-color: var(--bg-cream);
+            background-color: var(--bg-silk);
             color: var(--deep-indigo);
             overflow-x: hidden;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
-        /* Nền mờ nghệ thuật đồng điệu với back.jpg */
+        /* --- CÁC KHỐI BLUR BLOBS MỘNG ẢO DƯỚI NỀN --- */
         .page-bg-overlay {
             position: fixed;
             top: 0;
@@ -56,12 +56,49 @@
             background-image: url('back.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.14;
-            z-index: -2;
+            opacity: 0.12;
+            z-index: -3;
             pointer-events: none;
         }
 
-        /* Canvas hiệu ứng hoa rơi thanh tao */
+        .blur-blob {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -2;
+            opacity: 0.25;
+            pointer-events: none;
+            animation: floatBlobs 20s ease-in-out infinite alternate;
+        }
+
+        .blob-1 {
+            background-color: var(--secondary-blue);
+            top: -10%;
+            left: -10%;
+        }
+
+        .blob-2 {
+            background-color: var(--gold-accent);
+            bottom: -15%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            background-color: var(--sage-green);
+            top: 40%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatBlobs {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -60px) scale(1.15); }
+            100% { transform: translate(-20px, 30px) scale(0.9); }
+        }
+
         #petal-canvas {
             position: fixed;
             top: 0;
@@ -78,21 +115,21 @@
             top: 0;
             width: 100%;
             z-index: 100;
-            background: rgba(250, 247, 242, 0.78);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(78, 107, 130, 0.12);
-            padding: 15px 60px;
+            background: rgba(250, 246, 240, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1.5px solid rgba(78, 107, 130, 0.1);
+            padding: 20px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: var(--transition-smooth);
+            transition: var(--transition-luxury);
         }
 
         nav.scrolled {
-            padding: 10px 60px;
-            background: rgba(250, 247, 242, 0.92);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+            padding: 14px 80px;
+            background: rgba(250, 246, 240, 0.9);
+            box-shadow: 0 10px 40px rgba(32, 53, 69, 0.03);
         }
 
         .nav-logo {
@@ -101,12 +138,12 @@
             font-weight: 600;
             color: var(--primary-blue);
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 35px;
+            gap: 40px;
             align-items: center;
             list-style: none;
         }
@@ -139,23 +176,24 @@
             color: var(--primary-blue);
         }
 
-        /* NÚT DRIVE THỜI THƯỢNG MỚI (Glowing & Hover Pulse) */
+        /* NÚT DRIVE THỜI THƯỢNG (Glowing & Gradient Border Pulse) */
         .btn-drive {
             position: relative;
             background: linear-gradient(135deg, var(--deep-indigo), var(--primary-blue));
             color: #fff !important;
-            padding: 10px 24px;
-            border-radius: 30px;
+            padding: 12px 28px;
+            border-radius: 50px;
             font-size: 0.85rem !important;
             font-weight: 600 !important;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 20px rgba(78, 107, 130, 0.3);
-            transition: var(--transition-smooth);
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(62, 90, 115, 0.25);
+            transition: var(--transition-luxury);
             cursor: pointer;
         }
 
@@ -169,7 +207,7 @@
             background: linear-gradient(
                 120deg,
                 transparent,
-                rgba(255, 255, 255, 0.25),
+                rgba(255, 255, 255, 0.3),
                 transparent
             );
             transition: all 0.6s ease;
@@ -180,50 +218,45 @@
         }
 
         .btn-drive:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(78, 107, 130, 0.5);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(62, 90, 115, 0.4);
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-        }
-
-        .btn-drive::after {
-            display: none !important;
         }
 
         /* --- HERO SECTION --- */
         header {
             min-height: 100vh;
-            padding: 160px 10% 80px;
+            padding: 180px 10% 100px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 60px;
+            gap: 80px;
             position: relative;
         }
 
         .hero-text {
             flex: 1.2;
-            max-width: 650px;
+            max-width: 680px;
         }
 
         .hero-tag {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--primary-blue);
+            letter-spacing: 5px;
+            color: var(--sage-green);
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: inline-block;
         }
 
-        /* Thay đổi tiêu đề thành Tên chính chủ */
         .hero-text h1 {
-            font-family: var(--font-serif);
-            font-size: 5rem;
+            font-family: var(--font-display);
+            font-size: 4.8rem;
             font-weight: 400;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--deep-indigo);
-            letter-spacing: -1px;
+            letter-spacing: -2px;
         }
 
         .hero-subtitle {
@@ -231,28 +264,30 @@
             font-size: 1.8rem;
             color: var(--primary-blue);
             font-style: italic;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             font-weight: 300;
         }
 
         .hero-text p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--slate-gray);
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             font-weight: 300;
+            line-height: 1.8;
         }
 
         .student-meta {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 40px;
-            background: var(--white-glass);
-            padding: 24px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(32, 53, 69, 0.03);
+            background: var(--glass-white);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 15px 45px rgba(32, 53, 69, 0.04);
         }
 
         .meta-item {
@@ -265,12 +300,12 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--secondary-blue);
-            margin-bottom: 6px;
-            font-weight: 600;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
 
         .meta-val {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--deep-indigo);
         }
@@ -284,99 +319,50 @@
         }
 
         .avatar-wrapper {
-            width: 380px;
-            height: 380px;
+            width: 400px;
+            height: 400px;
             background-image: url('Hình 1.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            box-shadow: 0 20px 45px rgba(32, 53, 69, 0.12);
+            box-shadow: 0 25px 55px rgba(32, 53, 69, 0.15);
             animation: morphBlob 14s ease-in-out infinite alternate;
-            border: 10px solid rgba(255, 255, 255, 0.5);
+            border: 12px solid rgba(255, 255, 255, 0.5);
             position: relative;
             z-index: 10;
-        }
-
-        .avatar-decor {
-            position: absolute;
-            width: 115%;
-            height: 115%;
-            border: 1px dashed var(--primary-blue);
-            border-radius: 50%;
-            opacity: 0.25;
-            animation: rotateDecor 30s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes morphBlob {
-            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            50% { border-radius: 50% 60% 40% 60% / 50% 60% 50% 60%; }
-            100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 70%; }
-        }
-
-        @keyframes rotateDecor {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* --- SECTION CHUNG --- */
-        section {
-            padding: 100px 10%;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 70px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-header h2 {
-            font-family: var(--font-serif);
-            font-size: 3.2rem;
-            font-weight: 300;
-            color: var(--deep-indigo);
-            margin-bottom: 20px;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--slate-gray);
-            font-weight: 300;
         }
 
         /* --- PORTFOLIO OBJECTIVES --- */
         .objectives-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 50px;
             margin-bottom: 60px;
         }
 
         .objective-card {
-            background: var(--white-glass);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-            backdrop-filter: blur(10px);
-            transition: var(--transition-smooth);
+            background: var(--glass-white);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            border-radius: 28px;
+            padding: 45px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.02);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: var(--transition-luxury);
         }
 
         .objective-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(32, 53, 69, 0.05);
-            border-color: rgba(78, 107, 130, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(32, 53, 69, 0.05);
+            border-color: rgba(78, 107, 130, 0.3);
         }
 
         .objective-card h3 {
             font-family: var(--font-serif);
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 400;
             color: var(--primary-blue);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -388,10 +374,11 @@
 
         .objective-card li {
             position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
+            padding-left: 28px;
+            margin-bottom: 18px;
             font-weight: 300;
             color: var(--deep-indigo);
+            font-size: 1.05rem;
         }
 
         .objective-card li::before {
@@ -399,50 +386,51 @@
             position: absolute;
             left: 0;
             color: var(--sage-green);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         /* --- MAIN WORKSPACE WORKFLOW --- */
         .workspace-container {
             display: grid;
-            grid-template-columns: 290px 1fr;
-            gap: 40px;
-            background: var(--white-glass);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 30px;
-            padding: 35px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.03);
-            min-height: 850px;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            background: var(--glass-white);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            border-radius: 36px;
+            padding: 45px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.03);
+            min-height: 900px;
         }
 
         .workspace-sidebar {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            border-right: 1px solid rgba(78, 107, 130, 0.12);
-            padding-right: 20px;
+            gap: 15px;
+            border-right: 1.5px solid rgba(78, 107, 130, 0.1);
+            padding-right: 25px;
         }
 
         .workspace-sidebar-header {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
             color: var(--deep-indigo);
             padding: 10px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             border-bottom: 1.5px solid var(--primary-blue);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .workspace-tab {
             background: none;
             border: none;
-            padding: 14px 20px;
-            border-radius: 12px;
+            padding: 16px 24px;
+            border-radius: 14px;
             text-align: left;
             font-family: var(--font-sans);
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 500;
             color: var(--slate-gray);
             cursor: pointer;
@@ -460,58 +448,49 @@
         .workspace-tab.active {
             background: var(--primary-blue);
             color: #fff;
-            box-shadow: 0 8px 20px rgba(78, 107, 130, 0.2);
+            box-shadow: 0 8px 25px rgba(78, 107, 130, 0.25);
         }
 
         .workspace-tab span.num {
             font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             opacity: 0.7;
         }
 
-        .workspace-tab.active span.num {
-            opacity: 1;
-        }
-
         .workspace-content {
-            padding-left: 10px;
+            padding-left: 15px;
             position: relative;
         }
 
         .pane {
             display: none;
-            animation: fadeInPane 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeInPane 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .pane.active {
             display: block;
         }
 
-        @keyframes fadeInPane {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .pane-header {
             border-bottom: 1px solid rgba(78, 107, 130, 0.15);
-            padding-bottom: 25px;
-            margin-bottom: 30px;
+            padding-bottom: 28px;
+            margin-bottom: 35px;
         }
 
         .pane-tag {
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: var(--secondary-blue);
             font-weight: 700;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .pane-header h3 {
             font-family: var(--font-serif);
-            font-size: 2.3rem;
+            font-size: 2.8rem;
             font-weight: 400;
             color: var(--deep-indigo);
             line-height: 1.2;
@@ -519,63 +498,63 @@
 
         .pane-section-title {
             font-family: var(--font-serif);
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: var(--primary-blue);
-            margin-top: 35px;
-            margin-bottom: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
             font-weight: 500;
             border-left: 3px solid var(--sage-green);
-            padding-left: 15px;
+            padding-left: 18px;
         }
 
         .pane-body {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #3C4856;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
         .pane-body p {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-weight: 300;
         }
 
         /* --- INTERACTIVE SIMULATOR WIDGETS --- */
         .simulator-box {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(78, 107, 130, 0.15);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1.5px solid rgba(78, 107, 130, 0.15);
+            border-radius: 24px;
+            padding: 30px;
+            margin: 35px 0;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.02);
         }
 
         .simulator-title {
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--slate-gray);
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(78, 107, 130, 0.08);
-            padding-bottom: 10px;
+            gap: 12px;
+            border-bottom: 1.5px solid rgba(78, 107, 130, 0.08);
+            padding-bottom: 12px;
         }
 
         /* Simulator 1: macOS Finder Mockup */
         .finder-mockup {
             background: #fff;
-            border-radius: 12px;
-            border: 1px solid #D5DBDB;
+            border-radius: 14px;
+            border: 1.5px solid #D5DBDB;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         .finder-titlebar {
             background: #F0F3F4;
-            padding: 10px 16px;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid #D5DBDB;
@@ -611,15 +590,15 @@
 
         .finder-body {
             display: grid;
-            grid-template-columns: 180px 1fr;
-            height: 320px;
+            grid-template-columns: 190px 1fr;
+            height: 340px;
             background: #fff;
         }
 
         .finder-sidebar {
             background: #F4F6F6;
             border-right: 1px solid #E5E8E8;
-            padding: 15px 10px;
+            padding: 18px 12px;
             font-size: 0.8rem;
             color: #5D6D7E;
         }
@@ -629,7 +608,7 @@
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             padding-left: 8px;
         }
 
@@ -637,8 +616,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 6px 8px;
-            border-radius: 6px;
+            padding: 8px 10px;
+            border-radius: 8px;
             cursor: pointer;
             margin-bottom: 4px;
         }
@@ -650,10 +629,10 @@
         }
 
         .finder-content {
-            padding: 20px;
+            padding: 24px;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 24px;
             align-content: flex-start;
             overflow-y: auto;
         }
@@ -662,18 +641,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 85px;
+            width: 90px;
             text-align: center;
             animation: popInItem 0.3s ease forwards;
         }
 
-        @keyframes popInItem {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
         .finder-item-node i {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: #3498DB;
             margin-bottom: 8px;
         }
@@ -698,54 +672,38 @@
             align-items: center;
             margin-top: 15px;
             background: #F8F9F9;
-            padding: 12px 20px;
-            border-radius: 10px;
-            border: 1px solid #E5E8E8;
+            padding: 14px 24px;
+            border-radius: 12px;
+            border: 1.5px solid #E5E8E8;
         }
 
         .finder-step-text {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #2C3E50;
             font-weight: 600;
         }
 
-        .btn-finder-step {
-            background: var(--primary-blue);
-            color: #fff;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: var(--transition-fast);
-        }
-
-        .btn-finder-step:disabled {
-            background: #BDC3C7;
-            cursor: not-allowed;
-        }
-
-        /* --- SIMULATOR 2: GORGEOUS SCHOLARLY RESEARCH DECK --- */
+        /* --- SIMULATOR 2: GORGEOUS SCHOLARLY RESEARCH DECK WITH 3D TILT EFFECT --- */
         .acad-evaluator {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 20px;
         }
 
         .bib-tab-nav {
             display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            border-bottom: 1.5px solid rgba(78, 107, 130, 0.12);
-            padding-bottom: 12px;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(78, 107, 130, 0.12);
+            padding-bottom: 14px;
         }
 
         .bib-btn-tab {
             background: none;
             border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--slate-gray);
             cursor: pointer;
@@ -755,76 +713,78 @@
         .bib-btn-tab.active {
             background: var(--primary-blue);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(78, 107, 130, 0.2);
+            box-shadow: 0 6px 20px rgba(78, 107, 130, 0.25);
         }
 
         .bib-list-box {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-height: 420px;
+            gap: 20px;
+            max-height: 440px;
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 12px;
+            perspective: 1000px; /* Thêm phối cảnh 3D */
         }
 
         .bib-card-item {
             background: #fff;
-            border: 1px solid rgba(78, 107, 130, 0.12);
-            border-radius: 16px;
-            padding: 20px;
+            border: 1.5px solid rgba(78, 107, 130, 0.12);
+            border-radius: 18px;
+            padding: 24px;
             cursor: pointer;
-            transition: var(--transition-smooth);
+            transition: var(--transition-luxury);
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transform-style: preserve-3d;
         }
 
         .bib-card-item:hover {
             border-color: var(--primary-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(78, 107, 130, 0.08);
+            transform: translateY(-5px) rotateX(2deg) rotateY(-2deg);
+            box-shadow: 0 15px 35px rgba(78, 107, 130, 0.1);
         }
 
         .bib-card-item h5 {
             font-family: var(--font-serif);
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             color: var(--deep-indigo);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 600;
             line-height: 1.3;
         }
 
         .bib-card-item p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--slate-gray);
             font-style: italic;
-            margin-bottom: 15px;
-            line-height: 1.4;
+            margin-bottom: 18px;
+            line-height: 1.5;
         }
 
         .bib-meta-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(78, 107, 130, 0.06);
-            padding-top: 10px;
+            border-top: 1.5px solid rgba(78, 107, 130, 0.06);
+            padding-top: 12px;
             margin-top: auto;
         }
 
         .bib-card-type {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--primary-blue);
             font-weight: 600;
         }
 
         .bib-badge {
             font-size: 0.7rem;
-            padding: 3px 10px;
-            border-radius: 12px;
+            padding: 4px 12px;
+            border-radius: 14px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
         .badge-core { background: #E8F8F5; color: #117864; }
@@ -832,141 +792,136 @@
 
         .bib-detail-panel {
             background: #FFFDF9;
-            border: 1px solid rgba(78, 107, 130, 0.18);
-            border-radius: 16px;
-            padding: 25px;
-            margin-top: 20px;
+            border: 1.5px solid rgba(78, 107, 130, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 25px;
             display: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            animation: slideDownDetail 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes slideDownDetail {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            box-shadow: 0 15px 45px rgba(0,0,0,0.03);
+            animation: slideDownDetail 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .metric-bar-container {
-            margin: 15px 0;
+            margin: 18px 0;
         }
 
         .metric-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
-            margin-bottom: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
             font-weight: 600;
         }
 
         .metric-bar {
-            height: 6px;
+            height: 8px;
             background: #E5E8E8;
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .metric-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--secondary-blue), var(--primary-blue));
-            border-radius: 3px;
+            border-radius: 4px;
             width: 0%;
-            transition: width 0.8s ease-out;
+            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* --- SIMULATOR 3: MODERN AI WEB PLAYGROUND --- */
+        /* --- SIMULATOR 3: PREMIUM AI WEBSPACE --- */
         .prompt-console {
-            background: #111827;
-            border-radius: 16px;
+            background: #0F172A;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.18);
             font-family: var(--font-sans);
         }
 
         .console-header {
-            background: #1F2937;
-            padding: 12px 20px;
+            background: #1E293B;
+            padding: 14px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             color: #9CA3AF;
-            font-size: 0.8rem;
-            border-bottom: 1px solid #374151;
+            font-size: 0.85rem;
+            border-bottom: 1.5px solid #334155;
         }
 
         .console-header-dots {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
 
         .console-header-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: #4B5563;
+            background: #475569;
         }
 
         .console-body {
             padding: 0;
             color: #F3F4F6;
-            height: 520px;
+            height: 540px;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.15fr 0.85fr;
         }
 
         .console-input-pane {
-            border-right: 1px solid #374151;
-            padding: 25px;
+            border-right: 1.5px solid #334155;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: #111827;
+            background: #0F172A;
         }
 
         .console-prompt-box {
-            background: #1F2937;
-            border-radius: 12px;
-            padding: 15px;
-            border: 1px solid #374151;
-            height: 180px;
+            background: #1E293B;
+            border-radius: 14px;
+            padding: 18px;
+            border: 1.5px solid #334155;
+            height: 190px;
             overflow-y: auto;
             position: relative;
         }
 
         .console-prompt-text {
             font-family: 'Courier New', Courier, monospace;
-            color: #34D399;
-            font-size: 0.9rem;
+            color: #10B981;
+            font-size: 0.95rem;
             white-space: pre-wrap;
             word-break: break-all;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .console-prompt-label {
             position: absolute;
-            top: 8px;
-            right: 12px;
+            top: 10px;
+            right: 14px;
             font-size: 0.65rem;
-            color: #6B7280;
+            color: #64748B;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             font-weight: 700;
         }
 
         .console-selector-bar {
             display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
         }
 
         .btn-console-sel {
-            background: #374151;
-            color: #D1D5DB;
+            background: #334155;
+            color: #E2E8F0;
             border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition-fast);
@@ -979,21 +934,21 @@
 
         .console-radio-group {
             display: flex;
-            gap: 15px;
-            margin-top: 10px;
-            background: #1F2937;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid #374151;
+            gap: 18px;
+            margin-top: 12px;
+            background: #1E293B;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1.5px solid #334155;
         }
 
         .console-radio-label {
-            color: #9CA3AF;
-            font-size: 0.8rem;
+            color: #94A3B8;
+            font-size: 0.85rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             font-weight: 600;
         }
 
@@ -1002,39 +957,40 @@
         }
 
         .console-output-pane {
-            padding: 25px;
+            padding: 30px;
             overflow-y: auto;
-            color: #E5E7EB;
-            font-size: 0.85rem;
-            line-height: 1.7;
-            background: #0B0F19;
+            color: #F1F5F9;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            background: #090D16;
         }
 
         .console-output-pane h5 {
-            color: #FBBF24;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #1F2937;
-            padding-bottom: 6px;
+            color: #F59E0B;
+            margin-bottom: 14px;
+            font-size: 1rem;
+            border-bottom: 1.5px solid #1E293B;
+            padding-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .tag-pill {
             display: inline-block;
             font-size: 0.65rem;
-            padding: 2px 8px;
-            border-radius: 4px;
+            padding: 3px 10px;
+            border-radius: 6px;
             font-weight: 700;
             text-transform: uppercase;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
         }
 
-        .tag-pill-role { background: #3B82F6; color: #fff; }
-        .tag-pill-context { background: #10B981; color: #fff; }
-        .tag-pill-cot { background: #8B5CF6; color: #fff; }
+        .tag-pill-role { background: #2563EB; color: #fff; }
+        .tag-pill-context { background: #059669; color: #fff; }
+        .tag-pill-cot { background: #7C3AED; color: #fff; }
 
         /* --- SIMULATOR 4: Collaboration Trello Board --- */
         .collab-board {
@@ -1097,25 +1053,27 @@
             font-weight: 600;
         }
 
-        /* --- SIMULATOR 5: CREATIVE CANVAS WORKSPACE --- */
+        /* --- SIMULATOR 5: PREMIUM CREATIVE CANVAS (SPLIT SLIDER) --- */
         .creation-workspace {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 25px;
         }
 
         .creation-nav {
             display: flex;
-            gap: 10px;
-            margin-bottom: 5px;
+            gap: 12px;
+            margin-bottom: 8px;
+            border-bottom: 1.5px solid rgba(78, 107, 130, 0.1);
+            padding-bottom: 10px;
         }
 
         .btn-creation-tab {
             background: none;
             border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--slate-gray);
             cursor: pointer;
@@ -1125,122 +1083,114 @@
         .btn-creation-tab.active {
             background: var(--primary-blue);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(78, 107, 130, 0.2);
+            box-shadow: 0 6px 18px rgba(78, 107, 130, 0.2);
         }
 
-        .creation-canvas {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            animation: fadeInPane 0.4s ease forwards;
-        }
-
-        .canvas-card {
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+        /* split rèm trượt */
+        .slider-comparison-box {
             position: relative;
+            width: 100%;
+            height: 380px;
+            border-radius: 20px;
             overflow: hidden;
+            border: 1.5px solid rgba(78, 107, 130, 0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+        }
+
+        .slider-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            padding: 40px;
         }
 
-        .canvas-card-ai {
+        .layer-ai {
             background: #F4F6F7;
-            border: 1px solid #D5DBDB;
             color: #5D6D7E;
+            z-index: 1;
+            width: 50%; /* JS thay đổi width này */
+            border-right: 3px solid var(--primary-blue);
         }
 
-        .canvas-card-human {
+        .layer-human {
             background: #FFFDF9;
-            border: 1px solid rgba(78, 107, 130, 0.2);
             color: var(--deep-indigo);
+            z-index: 0;
         }
 
-        .canvas-badge {
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 10px;
-            text-transform: uppercase;
-            align-self: flex-start;
-            margin-bottom: 15px;
+        .canvas-text-content {
+            width: 700px; /* Cố định width bên trong để không bị co bóp khi kéo */
+            pointer-events: none;
         }
 
-        .canvas-badge-ai { background: #E5E7EB; color: #4B5563; }
-        .canvas-badge-human { background: #FFF9E6; color: #D97706; }
-
-        .canvas-card h4 {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: var(--deep-indigo);
+        .slider-control-bar {
+            width: 100%;
+            cursor: pointer;
+            margin-top: 15px;
+            accent-color: var(--primary-blue);
         }
 
-        .canvas-card p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-weight: 300;
-        }
-
-        .canvas-highlight-point {
-            background: rgba(217, 119, 6, 0.06);
-            border-left: 2px solid #D97706;
-            padding: 10px 15px;
-            font-size: 0.8rem;
-            border-radius: 0 8px 8px 0;
-            margin-top: auto;
+        .canvas-card-highlight {
+            background: rgba(217, 119, 6, 0.05);
+            border-left: 3px solid #D97706;
+            padding: 12px 18px;
+            font-size: 0.85rem;
+            border-radius: 0 10px 10px 0;
+            margin-top: 20px;
             font-weight: 500;
         }
 
         .pipeline-flow {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 25px;
+            gap: 20px;
+            margin-top: 30px;
             text-align: center;
         }
 
         .pipeline-node {
             background: #fff;
-            border: 1px solid rgba(78, 107, 130, 0.1);
-            border-radius: 12px;
-            padding: 15px;
+            border: 1.5px solid rgba(78, 107, 130, 0.1);
+            border-radius: 16px;
+            padding: 20px;
             cursor: pointer;
-            transition: var(--transition-smooth);
+            transition: var(--transition-luxury);
         }
 
         .pipeline-node:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
             border-color: var(--primary-blue);
-            box-shadow: 0 6px 18px rgba(78, 107, 130, 0.05);
+            box-shadow: 0 10px 25px rgba(78, 107, 130, 0.06);
         }
 
         .pipeline-node i {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--primary-blue);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .pipeline-node h6 {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--deep-indigo);
         }
 
-        /* --- SIMULATOR 6: Ethical Policies Interaction --- */
+        /* --- SIMULATOR 6: HEXAGONAL ETHICAL RULES INTERACTION --- */
         .compliance-wheel {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 20px;
         }
 
         .compliance-btn {
             background: #F4F6F7;
-            border: 1px solid #D5DBDB;
-            border-radius: 12px;
-            padding: 20px 15px;
+            border: 1.5px solid #D5DBDB;
+            border-radius: 16px;
+            padding: 25px 20px;
             cursor: pointer;
             text-align: center;
             transition: var(--transition-fast);
@@ -1250,30 +1200,31 @@
             background: var(--primary-blue);
             color: #fff;
             border-color: var(--primary-blue);
+            box-shadow: 0 8px 25px rgba(78, 107, 130, 0.15);
         }
 
         .compliance-btn i {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-bottom: 12px;
             display: block;
         }
 
         .compliance-btn span {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             display: block;
         }
 
         .compliance-detail {
             background: #FEF9E7;
-            border: 1px dashed #F39C12;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-            font-size: 0.9rem;
+            border: 1.5px dashed #F39C12;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 25px;
+            font-size: 0.95rem;
             color: #7E5109;
             display: none;
-            animation: slideDownDetail 0.4s ease forwards;
+            animation: slideDownDetail 0.5s ease forwards;
         }
 
         /* --- OVERALL SUMMARY (ACCORDION) --- */
@@ -1282,26 +1233,27 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         .accordion-item {
-            background: var(--white-glass);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
+            background: var(--glass-white);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            transition: var(--transition-smooth);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: var(--transition-luxury);
         }
 
         .accordion-header {
-            padding: 25px 35px;
+            padding: 28px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             font-family: var(--font-serif);
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             color: var(--deep-indigo);
             font-weight: 400;
             user-select: none;
@@ -1315,7 +1267,7 @@
 
         .accordion-item.active {
             border-color: rgba(78, 107, 130, 0.25);
-            box-shadow: 0 10px 30px rgba(32, 53, 69, 0.03);
+            box-shadow: 0 15px 40px rgba(32, 53, 69, 0.04);
         }
 
         .accordion-item.active .accordion-header i {
@@ -1325,14 +1277,14 @@
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .accordion-content-inner {
-            padding: 0 35px 30px;
-            font-size: 1.05rem;
+            padding: 0 40px 35px;
+            font-size: 1.1rem;
             color: #3C4856;
-            line-height: 1.8;
+            line-height: 1.9;
             font-weight: 300;
         }
 
@@ -1340,42 +1292,42 @@
         footer {
             background: var(--deep-indigo);
             color: #fff;
-            padding: 60px 10%;
+            padding: 70px 10%;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         footer h3 {
-            font-family: var(--font-serif);
-            font-size: 2rem;
+            font-family: var(--font-display);
+            font-size: 2.2rem;
             font-weight: 300;
-            margin-bottom: 12px;
-            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
         footer p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             opacity: 0.6;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 30px;
+            margin-bottom: 35px;
         }
 
         .social-icons a {
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             opacity: 0.6;
             transition: var(--transition-fast);
         }
 
         .social-icons a:hover {
             opacity: 1;
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             color: var(--sage-green);
         }
 
@@ -1386,9 +1338,9 @@
             }
             .workspace-sidebar {
                 border-right: none;
-                border-bottom: 1px solid rgba(78, 107, 130, 0.12);
+                border-bottom: 1.5px solid rgba(78, 107, 130, 0.12);
                 padding-right: 0;
-                padding-bottom: 20px;
+                padding-bottom: 25px;
                 flex-direction: row;
                 overflow-x: auto;
             }
@@ -1419,25 +1371,43 @@
             .objectives-grid {
                 grid-template-columns: 1fr;
             }
-            .compliance-wheel, .bib-list-box, .creation-canvas {
+            .compliance-wheel, .bib-list-box, .slider-comparison-box {
                 grid-template-columns: 1fr;
+            }
+            .layer-ai {
+                width: 100% !important;
+                border-right: none;
+                border-bottom: 2px solid var(--primary-blue);
+                height: 50%;
+            }
+            .layer-human {
+                height: 50%;
+                top: 50%;
+            }
+            .slider-control-bar {
+                display: none;
             }
             .console-body {
                 grid-template-columns: 1fr;
-                height: 550px;
+                height: 580px;
             }
             .console-input-pane {
                 border-right: none;
-                border-bottom: 1px solid #374151;
+                border-bottom: 1.5px solid #334155;
                 padding-right: 0;
-                padding-bottom: 15px;
+                padding-bottom: 20px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Lớp phủ nghệ thuật & Blur Blobs -->
     <div class="page-bg-overlay"></div>
+    <div class="blur-blob blob-1"></div>
+    <div class="blur-blob blob-2"></div>
+    <div class="blur-blob blob-3"></div>
+    
     <canvas id="petal-canvas"></canvas>
 
     <!-- THANH ĐIỀU HƯỚNG -->
@@ -1497,7 +1467,7 @@
                 <h3><i class="fa-solid fa-bullseye"></i> Mục tiêu Portfolio</h3>
                 <ul>
                     <li><strong>Hệ thống hóa học thuật:</strong> Gom góp và xâu chuỗi một cách chặt chẽ toàn bộ kiến thức, kỹ năng công nghệ số đã tích lũy từ môn học.</li>
-                    <li><strong>Minh chứng năng lực số:</strong> Khẳng định khả năng tự học, năng lực phản biện, sáng tạo nghệ thuật dựa trên nền tảng trí tuệ nhân tạo.</li>
+                    <li><strong>Minh chứng năng lực số:</strong> Khẳng năng tự học, năng lực phản biện, sáng tạo nghệ thuật dựa trên nền tảng trí tuệ nhân tạo.</li>
                     <li><strong>Tự kiểm soát tiến độ:</strong> Đánh giá mức độ trưởng thành của bản thân qua từng phân môn để hoàn thiện định hướng tương lai.</li>
                 </ul>
             </div>
@@ -1514,11 +1484,11 @@
 
     <!-- NÚT GỌI DRIVE -->
     <section style="padding: 0 10% 50px; text-align: center;">
-        <div style="background: var(--white-glass); border: 1px solid rgba(255, 255, 255, 0.6); padding: 50px 30px; border-radius: 24px; backdrop-filter: blur(10px);">
-            <h3 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 400; margin-bottom: 15px;">Thư mục lưu trữ trực tuyến</h3>
-            <p style="font-weight: 300; max-width: 600px; margin: 0 auto 30px; color: var(--slate-gray);">Toàn bộ tệp tin, sơ đồ phân cấp và minh chứng ảnh chụp chất lượng cao đã được mình phân loại hệ thống trên hệ thống Cloud.</p>
+        <div style="background: var(--glass-white); border: 1.5px solid rgba(255, 255, 255, 0.6); padding: 55px 30px; border-radius: 28px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);">
+            <h3 style="font-family: var(--font-serif); font-size: 2.3rem; font-weight: 400; margin-bottom: 15px;">Thư mục lưu trữ trực tuyến</h3>
+            <p style="font-weight: 300; max-width: 600px; margin: 0 auto 35px; color: var(--slate-gray);">Toàn bộ tệp tin, sơ đồ phân cấp và minh chứng ảnh chụp chất lượng cao đã được mình phân loại hệ thống trên hệ thống Cloud.</p>
             <div style="display: flex; justify-content: center;">
-                <a href="https://drive.google.com/drive/folders/1f0f-ktBTmgq-BYmMYyKL--_K4IdZnbmF?usp=drive_link" target="_blank" class="btn-drive" style="padding: 14px 36px; font-size: 1rem !important; border-radius: 50px;">
+                <a href="https://drive.google.com/drive/folders/1f0f-ktBTmgq-BYmMYyKL--_K4IdZnbmF?usp=drive_link" target="_blank" class="btn-drive" style="padding: 16px 42px; font-size: 0.95rem !important;">
                     <i class="fa-solid fa-folder-open"></i> Xem bài tập trên GG drive
                 </a>
             </div>
@@ -1791,20 +1761,33 @@
                         <p><strong>Mục tiêu:</strong> Hiện thực hóa ý tưởng học thuật bằng việc kết hợp sức mạnh của nhiều công cụ trí tuệ nhân tạo tạo sinh đại diện cho các mô hình ngôn ngữ lớn (Transformer) và mô hình khuếch tán (Diffusion). Dự án mình lựa chọn thực hiện là bài viết chuyên sâu mang tính phản biện cao về chủ đề: <i>"Kỷ nguyên GenAI: Khi Trí tuệ nhân tạo trở thành cộng sự sáng tạo"</i>.</p>
                         
                         <div class="pane-section-title">Không gian đồng sáng tạo tương tác cao</div>
-                        <p>Nhấp chuyển đổi giữa các tab tác vụ để xem sự phân rã rõ rệt giữa phần phác thảo tự động của trí tuệ nhân tạo (chiếm 40% khối lượng cơ bản) và bước tinh chỉnh học thuật tinh hoa của chính bản thân mình (chiếm 60% năng lực cốt lõi):</p>
+                        <p>Nhấp chuyển đổi giữa các tab tác vụ, đồng thời di chuyển thanh kéo rèm (Split Slider) để thấy sự khác biệt trực quan giữa bản phác thảo tự động của AI (40% khối lượng cơ bản) và bước tinh chỉnh học thuật tinh hoa của chính bản thân mình (60% năng lực cốt lõi):</p>
 
-                        <!-- Creative Canvas Workspace -->
+                        <!-- Creative Canvas Workspace (UPGRADED TO SPLIT SLIDER) -->
                         <div class="simulator-box">
-                            <div class="simulator-title"><i class="fa-solid fa-palette"></i> Trình duyệt quy trình tinh lọc nội dung</div>
+                            <div class="simulator-title"><i class="fa-solid fa-palette"></i> Trình so sánh quy trình đồng sáng tạo kéo rèm</div>
                             
                             <div class="creation-workspace">
                                 <div class="creation-nav">
                                     <button class="btn-creation-tab active" onclick="switchCreationTab('text')">Tác vụ 1: Văn bản (Google Gemini)</button>
                                     <button class="btn-creation-tab" onclick="switchCreationTab('image')">Tác vụ 2: Hình ảnh (Adobe Firefly)</button>
                                 </div>
-                                <div class="creation-canvas" id="creation-canvas-box">
-                                    <!-- Populated dynamically by JS -->
+                                
+                                <div class="slider-comparison-box">
+                                    <div class="slider-layer layer-ai" id="slider-ai-layer">
+                                        <div class="canvas-text-content" id="canvas-ai-content">
+                                            <!-- Dynamically populated by JS -->
+                                        </div>
+                                    </div>
+                                    <div class="slider-layer layer-human">
+                                        <div class="canvas-text-content" id="canvas-human-content" style="padding-left: 20px;">
+                                            <!-- Dynamically populated by JS -->
+                                        </div>
+                                    </div>
                                 </div>
+                                
+                                <input type="range" min="10" max="90" value="50" class="slider-control-bar" id="slider-range-bar" oninput="adjustSliderSplit()">
+                                
                                 <div class="pipeline-flow">
                                     <div class="pipeline-node" onclick="showPipelineDetail('edit')">
                                         <i class="fa-solid fa-pen-nib"></i>
@@ -1923,7 +1906,7 @@
         </div>
     </section>
 
-    <!-- TỔNG KẾT THUẬN LỢI, KHÓ KHĂN & BÀI HỌC (ACCORDION CHUNG) -->
+    <!-- TỔNG KẾT THUẬN LỢI, KHÓ KHĂN & BÀI HỌC -->
     <section id="reflection">
         <div class="section-header">
             <h2>Đúc kết hành trình</h2>
@@ -1952,7 +1935,7 @@
                 </div>
                 <div class="accordion-content">
                     <div class="accordion-content-inner">
-                        <p>Rào cản đầu tiên của mình chính là sự bỡ ngỡ về mặt kỹ thuật khi phải tự chuyển đổi toàn bộ hệ thống phím tắt và giao diện từ Windows sang hệ điều hành macOS trên thiết bị cá nhân của mình. Bên cạnh đó, việc thấu hiểu tường tận cơ chế hoạt động tầng sâu của các mô hình học máy phức tạp hay việc xử lý các xung đột giao tiếp trong nhóm trực tuyến khi các thành viên chưa thống nhất về nhận thức chuẩn mực hành vi mạng cũng là những thử thách khiến mình tốn nhiều thời gian trăn trở.</p>
+                        <p>Rào cản đầu tiên của mình chính là sự bỡ ngỡ về mặt kỹ thuật khi phải tự chuyển đổi toàn bộ hệ thống phím tắt và giao diện từ Windows sang hệ điều hành macOS trên thiết bị cá nhân của mình. Bên cạnh đó, việc thấu hiểu tường tận cơ chế hoạt động tầng sâu của các mô hình học máy phức tạp hay việc xử lý các xung đột giao tiếp trong nhóm trực tuyến khi các thành viên chưa đồng nhất về nhận thức chuẩn mực hành vi mạng cũng là những thử thách khiến mình tốn nhiều thời gian trăn trở.</p>
                     </div>
                 </div>
             </div>
@@ -2099,7 +2082,7 @@
             { id: 5, author: "Takako Nishino (2017)", title: "Foreign language learning and Japanese culture", type: "Bài báo khoa học", rel: "89%", act: "87%", prac: "91%", group: "extended", pros: "Đặc tả chi tiết sự tác động của văn hóa đại chúng (Anime, Manga) đến người học.", cons: "Số liệu khảo sát chủ yếu tập trung vào đối tượng trẻ tuổi.", val: "Giải thích hiện tượng chuyển dịch động lực từ học thuật sang sở thích cá nhân." },
             { id: 6, author: "Alastair Feryok & M. McEown (2019)", title: "Motivation to learn Japanese in New Zealand", type: "Bài báo khoa học", rel: "91%", act: "86%", prac: "84%", group: "extended", pros: "So sánh thực tiễn động lực giữa các vùng địa lý khác biệt.", cons: "Phạm vi dữ liệu mang tính đặc thù quốc gia cao, khó khái quát hóa.", val: "Minh chứng cho sự khác biệt về kỳ vọng văn hóa giữa các hệ thống giáo dục." },
             { id: 7, author: "M. Ueki & Osamu Takeuchi (2012)", title: "L2 Motivational Self System", type: "Bài báo khoa học", rel: "93%", act: "80%", prac: "85%", group: "extended", pros: "Mô hình hóa hoàn hảo cấu trúc cái tôi tự thân của người học ngôn ngữ.", cons: "Sử dụng nhiều thuật ngữ toán thống kê phức tạp, khó phân tích nhanh.", val: "Đóng góp công cụ định lượng xuất sắc để đo lường mức độ ảnh hưởng của văn hóa." },
-            { id: 8, author: "Claire Kramsch (2014)", title: "Language and Culture", type: "Sách học thuật", rel: "85%", act: "75%", prac: "80%", group: "core", pros: "Nền tảng lý thuyết xuất sắc về mối quan hệ biện chứng giữa ngôn ngữ và văn hóa.", cons: "Một số nội dung phân tích chưa bắt kịp các xu hướng giao lưu đa văn hóa thế hệ mới.", val: "Định hình nền tảng lý luận rằng học ngoại ngữ luôn đi liền với học cách tư duy văn hóa." },
+            { id: 8, author: "Claire Kramsch (2014)", title: "Language and Culture", type: "Sách học thuật", rel: "85%", act: "75%", prac: "80%", group: "core", pros: "Nền tảng lý thuyết xuất sắc về mối quan hệ biên chứng giữa ngôn ngữ và văn hóa.", cons: "Một số nội dung phân tích chưa bắt kịp các xu hướng giao lưu đa văn hóa thế hệ mới.", val: "Định hình nền tảng lý luận rằng học ngoại ngữ luôn đi liền với học cách tư duy văn hóa." },
             { id: 9, author: "Jeremy Harmer (2015)", title: "How to Teach English", type: "Sách phương pháp", rel: "82%", act: "78%", prac: "88%", group: "extended", pros: "Cung cấp hệ thống phương pháp sư phạm tương tác lớp học vô cùng thực tiễn.", cons: "Nội dung biên soạn chuyên biệt cho giảng dạy tiếng Anh.", val: "Gợi ý các kỹ thuật kích thích học sinh thảo luận nhóm dựa trên chủ đề văn hóa." },
             { id: 10, author: "Sarah Mercer & Marion Williams (2014)", title: "Multiple Perspectives on the Self in SLA", type: "Sách chuyên ngành", rel: "87%", act: "79%", prac: "81%", group: "extended", pros: "Phân tích tâm lý học chuyên sâu về sự tự tin và định vị bản thân của người học.", cons: "Lý thuyết trừu tượng, đòi hỏi người đọc phải có nền tảng tâm lý học vững vàng.", val: "Giải thích hiện tượng e ngại giao tiếp khi sinh viên tiếp cận văn hóa ứng xử mới." },
             { id: 11, author: "Japan Foundation (2022)", title: "Japanese Language Education Report", type: "Báo cáo thống kê", rel: "94%", act: "95%", prac: "90%", group: "core", pros: "Cung cấp hệ thống số liệu thực chứng quy mô lớn và cập nhật trên toàn thế giới.", cons: "Nặng về số liệu mô tả thô, còn hạn chế trong việc phân tích sâu về tâm lý học.", val: "Cung cấp cái nhìn toàn cảnh về làn sóng học tiếng Nhật toàn cầu và các trung tâm văn hóa." },
@@ -2166,7 +2149,7 @@
                 </div>
             `;
             
-            // Trigger animation for progress bars
+            // Kích hoạt thanh đo lường
             setTimeout(() => {
                 const fills = panel.querySelectorAll(".metric-fill");
                 fills.forEach(f => {
@@ -2194,7 +2177,7 @@
                 },
                 advanced: {
                     prompt: "Bạn là một nhà sử học công nghệ. Hãy phân tích lịch sử AI theo trình tự: (1) Giai đoạn đặt nền móng, (2) Các chu kỳ 'Mùa đông AI' và nguyên nhân của chúng, (3) Kỷ nguyên bùng nổ hiện đại. Yêu cầu: Đối với mỗi giai đoạn, hãy nêu bật một thành tựu tiêu biểu (ví dụ: Phép thử Turing hoặc Deep Blue) và giải thích tại sao nó lại là bước ngoặt. Trình bày dưới dạng bảng so sánh.",
-                    output: "<h5><i class='fa-solid fa-robot'></i> AI Playground Response</h5><div style='margin-bottom:10px;'><span class='tag-pill tag-pill-role'>Vai trò chuyên gia</span><span class='tag-pill tag-pill-context'>Ngữ cảnh giới hạn</span><span class='tag-pill tag-pill-cot'>Chain-of-Thought</span></div><p style='color:#34D399; font-weight:600;'>[BẢN PHÂN TÍCH TỪ NHÀ SỬ HỌC CÔNG NGHỆ CHUYÊN NGHIỆP]</p><table style='font-size:0.75rem; margin:12px 0; border:1px solid #374151; width:100%; border-collapse:collapse;'><tr style='background:#1F2937;'><th style='padding:6px; border:1px solid #374151;'>Giai đoạn</th><th style='padding:6px; border:1px solid #374151;'>Thành tựu</th><th style='padding:6px; border:1px solid #374151;'>Ý nghĩa</th></tr><tr><td style='padding:6px; border:1px solid #374151;'>Nền móng (1940-1956)</td><td style='padding:6px; border:1px solid #374151;'>Phép thử Turing (1950)</td><td style='padding:6px; border:1px solid #374151;'>Đặt nền móng triết học đầu tiên về khả năng tư duy của máy tính.</td></tr><tr><td style='padding:6px; border:1px solid #374151;'>Mùa đông AI</td><td style='padding:6px; border:1px solid #374151;'>Báo cáo Lighthill (1973)</td><td style='padding:6px; border:1px solid #374151;'>Chỉ ra giới hạn phần cứng và đề xuất cắt giảm ngân sách nghiên cứu.</td></tr><tr><td style='padding:6px; border:1px solid #374151;'>Bùng nổ hiện đại</td><td style='padding:6px; border:1px solid #374151;'>Deep Blue thắng Kasparov (1997)</td><td style='padding:6px; border:1px solid #374151;'>Cột mốc máy tính đánh bại trí tuệ con người ở trò chơi trí tuệ siêu việt.</td></tr></table><p style='color:#10B981; font-weight:600; margin-top:15px;'>Nhận xét: Định dạng trực quan, luận cứ chuyên sâu, làm nổi bật được nguyên lý gốc rễ của lịch sử công nghệ.</p>"
+                    output: "<h5><i class='fa-solid fa-robot'></i> AI Playground Response</h5><div style='margin-bottom:10px;'><span class='tag-pill tag-pill-role'>Vai vai trò chuyên gia</span><span class='tag-pill tag-pill-context'>Ngữ cảnh giới hạn</span><span class='tag-pill tag-pill-cot'>Chain-of-Thought</span></div><p style='color:#34D399; font-weight:600;'>[BẢN PHÂN TÍCH TỪ NHÀ SỬ HỌC CÔNG NGHỆ CHUYÊN NGHIỆP]</p><table style='font-size:0.75rem; margin:12px 0; border:1px solid #374151; width:100%; border-collapse:collapse;'><tr style='background:#1E293B;'><th style='padding:6px; border:1px solid #374151;'>Giai đoạn</th><th style='padding:6px; border:1px solid #374151;'>Thành tựu</th><th style='padding:6px; border:1px solid #374151;'>Ý nghĩa</th></tr><tr><td style='padding:6px; border:1px solid #374151;'>Nền móng (1940-1956)</td><td style='padding:6px; border:1px solid #374151;'>Phép thử Turing (1950)</td><td style='padding:6px; border:1px solid #374151;'>Đặt nền móng triết học đầu tiên về khả năng tư duy của máy tính.</td></tr><tr><td style='padding:6px; border:1px solid #374151;'>Mùa đông AI</td><td style='padding:6px; border:1px solid #374151;'>Báo cáo Lighthill (1973)</td><td style='padding:6px; border:1px solid #374151;'>Chỉ ra giới hạn phần cứng và đề xuất cắt giảm ngân sách nghiên cứu.</td></tr><tr><td style='padding:6px; border:1px solid #374151;'>Bùng nổ hiện đại</td><td style='padding:6px; border:1px solid #374151;'>Deep Blue thắng Kasparov (1997)</td><td style='padding:6px; border:1px solid #374151;'>Cột mốc máy tính đánh bại trí tuệ con người ở trò chơi trí tuệ siêu việt.</td></tr></table><p style='color:#10B981; font-weight:600; margin-top:15px;'>Nhận xét: Định dạng trực quan, luận cứ chuyên sâu, làm nổi bật được nguyên lý gốc rễ của lịch sử công nghệ.</p>"
                 }
             },
             2: {
@@ -2256,7 +2239,7 @@
             "task-docs": "<h5>Biên soạn nội dung Google Docs</h5><p><b>Hành động thực tế:</b> Cá nhân mình trực tiếp biên soạn hơn 5 trang nội dung học liệu chất lượng cao, đồng thời thực hiện hơn 10 lượt nhận xét chuyên môn có tính xây dựng cao để chỉnh sửa, trau chuốt câu từ cho đồng nghiệp một cách lịch sự, dân chủ.</p>",
             "task-discord": "<h5>Họp và tương tác qua kênh Discord</h5><p><b>Hành động thực tế:</b> Duy trì hoạt động sôi nổi với hơn 12 lượt thảo luận có chiều sâu trên kênh Discord chung của cả nhóm, hỗ trợ xử lý kỹ thuật cài đặt hệ thống và giải đáp thắc mắc chuyên môn cho đồng đội của mình.</p>",
             "challenge-cloudflare": "<h5>Thử thách 1: Lỗi chặn Cloudflare và Javascript</h5><p><b>Mô tả rào cản:</b> Khi truy cập các nguồn học liệu từ cổng thông tin giáo dục, một số thành viên bị hệ thống bảo mật Cloudflare chặn truy cập (Ray ID: a1ba35a1f9d2ba3f) hoặc báo lỗi trình duyệt không tương thích Javascript.</p><p><b>Giải pháp xử lý:</b> Mình đã hướng dẫn các bạn xóa lịch sử cookie, kích hoạt lại tính năng Script trong phần cài đặt quyền riêng tư của trình duyệt để tiếp cận tài liệu trơn tru.</p>",
-            "challenge-netiquette": "<h5>Thử thách 2: Bất đồng chuẩn mực hành vi (Netiquette)</h5><p><b>Mô tả rào cản:</b> Khi làm việc trực tuyến, có thành viên sử dụng từ ngữ quá thân mật, thiếu sự trang trọng cần thiết trong các kênh thảo luận báo cáo học thuật chung của cả nhóm.</p><p><b>Giải pháp xử lý:</b> Mình đã chủ động trò chuyện riêng để nhắc nhở khéo léo, đồng thời đề xuất ban hành một quy ước giao tiếp số lịch sự, chuẩn mực cho cả nhóm cùng tuân thủ.</p>",
+            "challenge-netiquette": "<h5>Thử thách 2: Bất đồng chuẩn mực hành vi (Netiquette)</h5><p><b>Mô tả rào cản:</b> Khi làm việc trực tuyến, có thành viên sử dụng từ ngữ quá thân mật, thiếu sự trang trọng cần thiết trong các kênh thảo luận báo cáo học thuật chung của cả nhóm.</p><p><b>Giải pháp xử lý:</b> Mình đã chủ động nhắc nhở khéo léo, đồng thời đề xuất ban hành một quy ước giao tiếp số lịch sự, chuẩn mực cho cả nhóm cùng tuân thủ.</p>",
             "challenge-privacy": "<h5>Thử thách 3: Rủi ro bản quyền và bảo mật dữ liệu</h5><p><b>Mô tả rào cản:</b> Việc chia sẻ tài liệu công khai trên Drive của nhóm tiềm ẩn nguy cơ bị người ngoài sao chép trái phép hoặc rò rỉ thông tin cá nhân của các thành viên.</p><p><b>Giải pháp xử lý:</b> Áp dụng Luật An ninh mạng, mình đã cấu hình lại quyền truy cập thư mục thành 'Chỉ xem' (View Only) đối với bản thảo hoàn thiện cuối cùng và thiết lập ghi công tham chiếu rõ ràng cho từng tài liệu.</p>"
         };
 
@@ -2266,7 +2249,7 @@
             box.innerHTML = collabDetailsData[key];
         }
 
-        /* --- SIMULATOR 5: UPGRADED CREATIVE CANVAS LOGIC --- */
+        /* --- SIMULATOR 5: CREATIVE CANVAS LOGIC WITH SPLIT SLIDER --- */
         let activeCreationTab = 'text';
         const creationCanvasData = {
             'text': {
@@ -2317,21 +2300,27 @@
 
         function renderCreationCanvas() {
             const data = creationCanvasData[activeCreationTab];
-            const container = document.getElementById("creation-canvas-box");
-            container.innerHTML = `
-                <div class="canvas-card canvas-card-ai">
-                    <span class="canvas-badge canvas-badge-ai">${data.ai.badge}</span>
-                    <h4>${data.ai.title}</h4>
-                    <p>${data.ai.desc}</p>
-                    <div class="canvas-highlight-point"><i class="fa-solid fa-triangle-exclamation"></i> Điểm hạn chế: ${data.ai.highlight}</div>
-                </div>
-                <div class="canvas-card canvas-card-human">
-                    <span class="canvas-badge canvas-badge-human">${data.human.badge}</span>
-                    <h4>${data.human.title}</h4>
-                    <p>${data.human.desc}</p>
-                    <div class="canvas-highlight-point" style="background: rgba(16, 185, 129, 0.06); border-color: #10B981; color: #065F46;"><i class="fa-solid fa-wand-magic-sparkles"></i> Điểm tinh túy: ${data.human.highlight}</div>
-                </div>
+            const aiContainer = document.getElementById("canvas-ai-content");
+            const humanContainer = document.getElementById("canvas-human-content");
+            
+            aiContainer.innerHTML = `
+                <span class="canvas-badge canvas-badge-ai">${data.ai.badge}</span>
+                <h4 style="margin-top: 10px;">${data.ai.title}</h4>
+                <p style="font-size: 0.9rem; line-height: 1.6;">${data.ai.desc}</p>
+                <div class="canvas-card-highlight" style="background: rgba(231, 76, 60, 0.05); border-color: #E74C3C; color: #922B21;"><i class="fa-solid fa-triangle-exclamation"></i> Điểm hạn chế: ${data.ai.highlight}</div>
             `;
+            
+            humanContainer.innerHTML = `
+                <span class="canvas-badge canvas-badge-human">${data.human.badge}</span>
+                <h4 style="margin-top: 10px;">${data.human.title}</h4>
+                <p style="font-size: 0.9rem; line-height: 1.6;">${data.human.desc}</p>
+                <div class="canvas-card-highlight" style="background: rgba(16, 185, 129, 0.05); border-color: #10B981; color: #0E6251;"><i class="fa-solid fa-wand-magic-sparkles"></i> Điểm tinh hoa: ${data.human.highlight}</div>
+            `;
+        }
+
+        function adjustSliderSplit() {
+            const val = document.getElementById("slider-range-bar").value;
+            document.getElementById("slider-ai-layer").style.width = val + "%";
         }
 
         function showPipelineDetail(key) {
@@ -2345,7 +2334,7 @@
             1: "<h5>Nguyên tắc 'Con người làm chủ'</h5><p>Trí tuệ nhân tạo (GenAI) chỉ đóng vai trò là trợ lý ảo hỗ trợ tìm kiếm và khơi gợi ý tưởng cho mình. Mọi lập luận, logic bài viết và phán quyết chuyên môn cuối cùng bắt buộc phải được thực hiện bằng năng lực trí tuệ độc lập của chính bản thân mình.</p>",
             2: "<h5>Nguyên tắc 'Kiểm chứng thực tế' (21.3%)</h5><p>Mình cam kết luôn đặt bản thân nằm trong số ít thiểu số sinh viên (khoảng 21.3%) có ý thức phản biện cao: tuyệt đối không tin tưởng mù quáng vào kết quả từ AI, luôn kiểm tra chéo tính chính xác của dữ liệu với các tài liệu gốc uy tín.</p>",
             3: "<h5>Nguyên tắc 'Minh bạch tuyệt đối'</h5><p>Thực hiện việc công khai minh bạch toàn bộ quá trình sử dụng AI trong bài viết của mình. Mình luôn ghi chú rõ ràng phần việc nào có sự hỗ trợ của thuật toán (ví dụ: soát lỗi chính tả tiếng Nhật, sửa định dạng bảng dữ liệu) để bảo đảm sự trung thực.</p>",
-            4: "<h5>Nguyên tắc 'Bảo mật dữ liệu cá nhân'</h5><p>Tuyệt đối không tải các thông tin cá nhân nhạy cảm, dữ liệu nội bộ lớp học lên các công cụ AI công cộng, tuân thủ nghiêm túc Luật bảo vệ dữ liệu cá nhân Việt Nam có hiệu lực từ năm 2026.</p>",
+            4: "<h5>Nguyên tắc 'Bảo mật dữ liệu cá nhân'</h5><p>Không bao giờ tải các thông tin cá nhân nhạy cảm, dữ liệu nội bộ lớp học lên các công cụ AI công cộng, tuân thủ nghiêm túc Luật bảo vệ dữ liệu cá nhân Việt Nam có hiệu lực từ năm 2026.</p>",
             5: "<h5>Nguyên tắc 'Phát triển tư duy độc lập'</h5><p>Thay vì sử dụng AI để chép đáp án cuối cùng một cách thụ động, mình dùng AI để đặt các câu hỏi phản biện nghịch đảo vấn đề, rèn luyện óc phân tích sắc sảo từ nhiều góc nhìn khác nhau.</p>",
             6: "<h5>Nguyên tắc 'Ghi nguồn chuẩn mực'</h5><p>Coi sản phẩm tạo sinh từ AI là một nguồn tham khảo đặc biệt và tiến hành trích dẫn đúng quy chuẩn học thuật quốc tế, tuyệt đối không bao giờ nhận vơ sản phẩm của AI là chất xám tự thân của mình.</p>"
         };
@@ -2368,6 +2357,7 @@
             filterBib('all');
             updateConsoleDisplay();
             renderCreationCanvas();
+            adjustSliderSplit(); // Thiết lập thanh kéo mặc định ban đầu
         });
 
         /* --- HIỆU ỨNG CÁNH HOA RƠI ANH ĐÀO (CANVAS API) --- */
